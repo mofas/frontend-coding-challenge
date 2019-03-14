@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import { Header, HeaderNavigation, Footer } from 'rivet-react';
+import Page1 from './Components/Page1';
+import Page2 from './Components/Page2';
 
 import styled from 'styled-components';
 
@@ -15,14 +17,6 @@ const AppWindow = styled.div`
 const Container = styled.div`
   flex: 1;
 `;
-
-const Page1 = () => {
-  return <div>Page1</div>;
-};
-
-const Page2 = () => {
-  return <div>Page2</div>;
-};
 
 const App = () => {
   const [tab, setTab] = useState('tab1');
