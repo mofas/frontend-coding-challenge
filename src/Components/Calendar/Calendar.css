@@ -1,0 +1,133 @@
+.component-calendar {
+  display: flex;
+  border-radius: 5px;
+  color: #4a5b6b;
+  user-select: none;
+}
+.component-calendar .nav-btn {
+  display: flex;
+  padding: 12px 4px;
+  cursor: pointer;
+  align-items: center;
+}
+.component-calendar .nav-btn .arrow-icon {
+  width: 22px;
+  fill: #2c2c2c;
+}
+.component-calendar .calendar-table {
+  flex: 1;
+}
+.component-calendar .calendar-header {
+  display: flex;
+  align-items: center;
+  padding: 4px 0 8px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0 auto;
+}
+.component-calendar .calendar-header .date {
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #2c2c2c;
+  text-transform: uppercase;
+}
+.component-calendar .cal-row-fluid .cal-span {
+  position: relative;
+  display: block;
+  float: left;
+  width: 14.285714285714285%;
+  margin: 4px 0;
+}
+.component-calendar .cal-row-fluid .cal-span.inDuration {
+  background: #ededed;
+}
+.component-calendar .cal-row-fluid .cal-span.fromDuration,
+.component-calendar .cal-row-fluid .cal-span.toDuration {
+  background: inherit;
+}
+.component-calendar .cal-row-fluid .cal-span.fromDuration .cal-month-day,
+.component-calendar .cal-row-fluid .cal-span.toDuration .cal-month-day {
+  background: #55a9ff;
+  color: #fff;
+}
+.component-calendar .cal-row-fluid .cal-span.fromDuration:after,
+.component-calendar .cal-row-fluid .cal-span.toDuration:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: #ededed;
+  z-index: 0;
+}
+.component-calendar .cal-row-fluid .cal-span.fromDuration:after {
+  left: 50%;
+  right: 0;
+}
+.component-calendar .cal-row-fluid .cal-span.toDuration:after {
+  right: 50%;
+  left: 0;
+}
+.component-calendar .cal-row-fluid .cal-span.fromDuration.toDuration:after {
+  content: none;
+}
+.component-calendar .cal-row-fluid .cal-span.cal-day-outmonth {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0;
+}
+.component-calendar .cal-row-fluid:after {
+  clear: both;
+}
+.component-calendar .cal-row-fluid:before,
+.component-calendar .cal-row-fluid:after {
+  display: table;
+  content: '';
+  line-height: 0;
+}
+.component-calendar .cal-row-head {
+  margin-bottom: 8px;
+  padding: 0 4px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.component-calendar .cal-row-head .cal-span {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #2c2c2c;
+}
+.component-calendar .cal-month-box {
+  padding: 2px 4px 16px;
+}
+.component-calendar .cal-month-day {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  color: #2c2c2c;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  z-index: 1;
+}
+.component-calendar .cal-month-day:hover {
+  background-color: #c9c9c9;
+}
+.component-calendar .cal-month-day:active {
+  background-color: #afafaf;
+}
+.component-calendar .cal-month-day.selected {
+  background: #55a9ff;
+  color: #fff;
+}
+.component-calendar .cal-month-day.notAvailable {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0;
+}

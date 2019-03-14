@@ -1,0 +1,31 @@
+.input {
+  background-color: transparent;
+  border-bottom: 1px solid #c8c8c8;
+  border-width: 0 0 1px 0;
+  color: #2c2c2c;
+  display: block;
+  font-family: 'Open Sans';
+  font-size: 0.75rem;
+  height: 1.75rem;
+  letter-spacing: 0.0125rem;
+  line-height: 1.75rem;
+  outline: 0;
+  padding: 0.188rem 0;
+  width: 100%;
+}
+.input::placeholder {
+  color: #7d7d7d;
+}
+.input:hover {
+  border-bottom: 1px solid #55baff;
+}
+.input:focus {
+  border-bottom: 1px solid #007eff;
+  color: #2c2c2c;
+}
+.input:disabled,
+.input.disabled {
+  border-bottom: 1px solid rgba(206, 206, 206, 0.3);
+  color: #2c2c2c;
+  opacity: 0.6;
+}

@@ -1,0 +1,42 @@
+.component-datepick {
+  position: relative;
+  padding-right: 30px;
+}
+.component-datepick.disabled {
+  pointer-events: none;
+}
+.component-datepick input:focus ~ .icon-calendar {
+  color: #55a9ff;
+}
+.component-datepick:hover .icon-calendar {
+  color: #55a9ff;
+}
+.component-datepick .calendar-wrap {
+  position: absolute;
+  opacity: 0;
+  width: 400px;
+  top: 100%;
+  left: 0px;
+  margin-top: 8px;
+  padding: 8px;
+  z-index: 10;
+  pointer-events: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.38);
+  transition: opacity 0.1s, transform 0.1s;
+  transition-timing-function: ease-in-out;
+}
+.component-datepick .calendar-wrap.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+.component-datepick .icon-calendar {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  bottom: 3px;
+  right: 8px;
+  color: #2c2c2c;
+}
