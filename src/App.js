@@ -1,28 +1,61 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { hot } from 'react-hot-loader';
+import { Header, HeaderNavigation, Footer } from 'rivet-react';
+
+import styled from 'styled-components';
+
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const AppWindow = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
 
-export default App;
+const Container = styled.div`
+  flex: 1;
+`;
+
+const Page1 = () => {
+  return <div>Page1</div>;
+};
+
+const Page2 = () => {
+  return <div>Page2</div>;
+};
+
+const App = () => {
+  const [tab, setTab] = useState('tab1');
+
+  return (
+    <AppWindow>
+      <Header title="Deep Sentinel">
+        <HeaderNavigation>
+          {tab === 'tab1' ? (
+            <a aria-current="Page1" onClick={() => setTab('tab1')}>
+              Page 1
+            </a>
+          ) : (
+            <a onClick={() => setTab('tab1')}>Page 1</a>
+          )}
+          {tab === 'tab2' ? (
+            <a aria-current="Page2" onClick={() => setTab('tab2')}>
+              Page 2
+            </a>
+          ) : (
+            <a onClick={() => setTab('tab2')}>Page 2</a>
+          )}
+        </HeaderNavigation>
+      </Header>
+      <Container>
+        {tab === 'tab1' ? <Page1 /> : null}
+        {tab === 'tab2' ? <Page2 /> : null}
+      </Container>
+      <Footer />
+    </AppWindow>
+  );
+};
+
+export default (process.env.NODE_ENV === 'development'
+  ? hot(module)(App)
+  : App);
