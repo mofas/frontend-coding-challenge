@@ -4,14 +4,10 @@ import { fromJS, List } from 'immutable';
 import { timeFormat } from 'd3-time-format';
 import { extent } from 'd3-array';
 import { scaleTime, scaleLinear } from 'd3-scale';
-// import { line, stack, area } from 'd3-shape';
-import { line } from 'd3-shape';
 import { axisBottom, axisLeft } from 'd3-axis';
 
 import AxisWrapper from './AxisWrapper';
-import Line from './Line';
-
-import './StackChart.css';
+import Bar from './Bar';
 
 const formatTime = timeFormat('%m/%d %I:%M');
 
@@ -34,8 +30,7 @@ export default class StackChart extends React.PureComponent {
     xKey: 'x',
     keys: List(),
     data: fromJS([[]]),
-    lineColorMapFn: List(),
-    areaColorMapFn: List(),
+    colorMapFn: List(),
     yAxisTickFormat: yAxisTickFormatDefault
   };
 
@@ -45,13 +40,24 @@ export default class StackChart extends React.PureComponent {
       xKey,
       keys,
       data,
-      lineColorMapFn,
       yAxisTickFormat,
       width,
-      height
+      height,
+      colorMapFn
     } = props;
 
-    const pdata = data.toJS();
+    let pdata = data.toJS();
+
+    pdata = pdata.map(d => {
+      d.y = {};
+      let based = 0;
+      keys.forEach(key => {
+        d.y[key] = based;
+        based += d[key];
+      });
+      return d;
+    });
+    // console.log(pdata.map(d => d[xKey]));
 
     const actualWidth = width - margin.left - margin.right;
     const actualHeight = height - margin.top - margin.bottom;
@@ -73,7 +79,7 @@ export default class StackChart extends React.PureComponent {
 
     const xAxis = axisBottom()
       .scale(xFn)
-      .ticks(xTicks)
+      .ticks(4)
       .tickSize(0)
       .tickFormat(formatTime);
 
@@ -83,18 +89,10 @@ export default class StackChart extends React.PureComponent {
       .tickFormat(yAxisTickFormat)
       .tickSize(-actualWidth);
 
-    // const stackFn = stack().keys(keys.toJS());
-    // const stackData = stackFn(pdata);
-
-    const drawLineFunction = key =>
-      line()
-        .x(d => xFn(d[xKey]))
-        .y(d => yFn(d[key]));
-
-    // const drawAreaFunction = area()
-    //   .x(d => xFn(d.data[xKey]))
-    //   .y0(d => yFn(d[0] || 0))
-    //   .y1(d => yFn(d[0] + (d[1] || 0)));
+    const getX = d => xFn(d[xKey]);
+    const barWidth = actualWidth / pdata.length;
+    // console.log(yFn(0), yFn(10));
+    console.log(pdata[0]);
 
     return (
       <div className="component-stack-chart component-chart">
@@ -107,17 +105,14 @@ export default class StackChart extends React.PureComponent {
             xAxisModifier={xAxisModifier}
             yAxisModifier={yAxisModifier}
           >
-            <Line
+            <Bar
               keys={keys}
-              lineData={pdata}
-              lineColorMapFn={lineColorMapFn.toJS()}
-              drawLineFunction={drawLineFunction}
+              data={pdata}
+              barWidth={barWidth}
+              colorMapFn={colorMapFn}
+              xFn={getX}
+              yFn={yFn}
             />
-            {/* <Area
-              stackData={stackData}
-              areaColorMapFn={areaColorMapFn.toJS()}
-              drawAreaFunction={drawAreaFunction}
-            /> */}
           </AxisWrapper>
         </svg>
       </div>

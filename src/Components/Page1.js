@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import DatePicker from './DatePicker/DatePicker';
 import StackChart from './StackChart/StackChart';
+import BarChart from './StackChart/BarChart';
 
 import rawData from '../data/valid-invalid.json';
 
@@ -60,14 +61,22 @@ const Page1 = () => {
         />
       </DatePickerGroup>
       {chartData.count() > 0 ? (
-        <StackChart
-          keys={fromJS(['total_count', 'imcompleted'])}
-          lineColorMapFn={fromJS(['#68b5f5', '#0df'])}
-          data={chartData}
-        />
+        <div>
+          <StackChart
+            keys={fromJS(['total_count', 'imcompleted'])}
+            lineColorMapFn={fromJS(['#68b5f5', '#0df'])}
+            data={chartData}
+          />
+          <BarChart
+            keys={fromJS(['total_count', 'imcompleted'])}
+            colorMapFn={fromJS(['#68b5f5', '#0df'])}
+            data={chartData}
+          />
+        </div>
       ) : (
         <div>No Data is available</div>
       )}
+
       <LegendWrap>
         <Legend color="#68b5f5" /> : total_count
         <Legend color="#0df" /> : imcompleted
