@@ -13,6 +13,16 @@ const DatePickerGroup = styled.div`
   width: 640px;
 `;
 
+const LegendWrap = styled.div`
+  margin: 20px;
+`;
+const Legend = styled.div`
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 20px;
+  background: ${props => props.color};
+`;
 const data = fromJS(
   rawData.map(d => {
     d.x = new Date(d.time_sec);
@@ -49,11 +59,19 @@ const Page1 = () => {
           onChange={e => setToTime(e.fullDate)}
         />
       </DatePickerGroup>
-      <StackChart
-        keys={fromJS(['total_count', 'imcompleted'])}
-        lineColorMapFn={fromJS(['#68b5f5', '#0df'])}
-        data={chartData}
-      />
+      {chartData.count() > 0 ? (
+        <StackChart
+          keys={fromJS(['total_count', 'imcompleted'])}
+          lineColorMapFn={fromJS(['#68b5f5', '#0df'])}
+          data={chartData}
+        />
+      ) : (
+        <div>No Data is available</div>
+      )}
+      <LegendWrap>
+        <Legend color="#68b5f5" /> : total_count
+        <Legend color="#0df" /> : imcompleted
+      </LegendWrap>
     </div>
   );
 };
