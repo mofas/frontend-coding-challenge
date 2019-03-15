@@ -2,7 +2,7 @@
   "name": "frontend-coding-challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/mofas/frontend-coding-challenge",
+  "homepage": "https://mofas.github.io/frontend-coding-challenge/",
   "dependencies": {
     "classnames": "2.2.6",
     "csvtojson": "^2.0.8",
