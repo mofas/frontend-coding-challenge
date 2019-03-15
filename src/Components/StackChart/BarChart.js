@@ -92,7 +92,6 @@ export default class StackChart extends React.PureComponent {
     const getX = d => xFn(d[xKey]);
     const barWidth = actualWidth / pdata.length;
     // console.log(yFn(0), yFn(10));
-    console.log(pdata[0]);
 
     return (
       <div className="component-stack-chart component-chart">

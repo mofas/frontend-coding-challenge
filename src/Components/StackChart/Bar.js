@@ -14,6 +14,8 @@ export default class Line extends React.PureComponent {
   render() {
     const { props } = this;
     const { barWidth, xFn, yFn, keys, data, colorMapFn } = props;
+    let width = barWidth < 4 ? 4 : barWidth;
+
     return (
       <g className="bar-layer">
         {data.map((d, i) => {
@@ -23,7 +25,7 @@ export default class Line extends React.PureComponent {
                 <rect
                   x={xFn(d) + 1}
                   y={yFn(d.y[key] + d[key])}
-                  width={barWidth / 2 - 2}
+                  width={(width - 1) / 2}
                   height={yFn(0) - yFn(d[key])}
                   fill={colorMapFn.get(j)}
                 />
