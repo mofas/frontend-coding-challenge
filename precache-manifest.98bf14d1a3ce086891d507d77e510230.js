@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "c4343746df0fdda813e6",
+    "revision": "79f6b9e2737e53609d36",
     "url": "/frontend-coding-challenge/static/css/main.5a8e34fa.chunk.css"
   },
   {
-    "revision": "c4343746df0fdda813e6",
-    "url": "/frontend-coding-challenge/static/js/main.f384676e.chunk.js"
+    "revision": "79f6b9e2737e53609d36",
+    "url": "/frontend-coding-challenge/static/js/main.6feafe4b.chunk.js"
   },
   {
     "revision": "0b4b54d6640626e348e7",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/frontend-coding-challenge/static/js/2.bf9e8dd1.chunk.js"
   },
   {
-    "revision": "7f237df58b383dd3c228359984bd4375",
+    "revision": "19f5b72cfe9591abfa87d49f65bbbcd7",
     "url": "/frontend-coding-challenge/index.html"
   }
 ];
