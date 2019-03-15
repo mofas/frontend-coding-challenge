@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/mofas/frontend-coding-challenge/precache-manifest.ab27e4c3445294da25056757d8e4f1c9.js"
+  "/frontend-coding-challenge/precache-manifest.d42ab1abb4c8cbf06f949a5cd36f307d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/mofas/frontend-coding-challenge/index.html", {
+workbox.routing.registerNavigationRoute("/frontend-coding-challenge/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
