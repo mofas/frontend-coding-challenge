@@ -1,4 +1,3 @@
-import classnames from 'classnames/bind';
 import React from 'react';
 
 import './Input.css';

@@ -4,12 +4,12 @@ import { fromJS, List } from 'immutable';
 import { timeFormat } from 'd3-time-format';
 import { extent } from 'd3-array';
 import { scaleTime, scaleLinear } from 'd3-scale';
-import { line, stack, area } from 'd3-shape';
+// import { line, stack, area } from 'd3-shape';
+import { line } from 'd3-shape';
 import { axisBottom, axisLeft } from 'd3-axis';
 
 import AxisWrapper from './AxisWrapper';
 import Line from './Line';
-import Area from './Area';
 
 import './StackChart.css';
 
@@ -46,7 +46,6 @@ export default class StackChart extends React.PureComponent {
       keys,
       data,
       lineColorMapFn,
-      areaColorMapFn,
       yAxisTickFormat,
       width,
       height
@@ -84,18 +83,18 @@ export default class StackChart extends React.PureComponent {
       .tickFormat(yAxisTickFormat)
       .tickSize(-actualWidth);
 
-    const stackFn = stack().keys(keys.toJS());
-    const stackData = stackFn(pdata);
+    // const stackFn = stack().keys(keys.toJS());
+    // const stackData = stackFn(pdata);
 
     const drawLineFunction = key =>
       line()
         .x(d => xFn(d[xKey]))
         .y(d => yFn(d[key]));
 
-    const drawAreaFunction = area()
-      .x(d => xFn(d.data[xKey]))
-      .y0(d => yFn(d[0] || 0))
-      .y1(d => yFn(d[0] + (d[1] || 0)));
+    // const drawAreaFunction = area()
+    //   .x(d => xFn(d.data[xKey]))
+    //   .y0(d => yFn(d[0] || 0))
+    //   .y1(d => yFn(d[0] + (d[1] || 0)));
 
     return (
       <div className="component-stack-chart component-chart">
